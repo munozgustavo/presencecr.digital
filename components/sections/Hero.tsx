@@ -2,44 +2,42 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
+import { siteConfig } from "@/config/site";
+import { getDictionary } from "@/app/lib/getDictionary";
 
 export function Hero() {
+    const t = getDictionary(siteConfig.lang as any);
+
     return (
         <Section className="relative overflow-hidden pt-16 md:pt-24 lg:pt-32 pb-16">
             <Container className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="flex flex-col gap-6 text-center lg:text-left">
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground font-heading">
-                        Diseño Web Profesional en Costa Rica <br />
-                        <span className="text-primary text-3xl sm:text-4xl lg:text-5xl block mt-2">Tu página lista en 24 horas para atraer más clientes</span>
+                        {t.hero.title} <br />
+                        <span className="text-primary text-3xl sm:text-4xl lg:text-5xl block mt-2">{t.hero.subtitle}</span>
                     </h1>
                     <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                        Ayudamos a emprendedores y pymes de Costa Rica a conseguir más clientes con páginas web modernas, rápidas y listas para vender. Sin tecnicismos. Sin complicaciones.
+                        {t.hero.description}
                     </p>
                     <div className="flex flex-col gap-3 items-center lg:items-start">
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start w-full">
                             <Button size="lg" href="/#contacto">
-                                Solicitar Cotización
+                                {t.hero.ctaPrimary}
                             </Button>
                             <Button variant="outline" size="lg" href="/#precios">
-                                Ver Planes y Precios
+                                {t.hero.ctaSecondary}
                             </Button>
                         </div>
-                        <span className="text-xs text-muted-foreground lg:ml-2">Respuesta rápida · Sin compromiso</span>
+                        <span className="text-xs text-muted-foreground lg:ml-2">{t.hero.trustText}</span>
                     </div>
 
                     <div className="pt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-muted-foreground text-sm">
-                        <div className="flex items-center gap-2">
-                            <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                            <span>Página lista en 24–48 horas</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                            <span>Atención directa por WhatsApp</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                            <span>Planes accesibles desde $230</span>
-                        </div>
+                        {t.hero.benefits.map((benefit, index) => (
+                            <div key={index} className="flex items-center gap-2">
+                                <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                <span>{benefit}</span>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
@@ -47,7 +45,7 @@ export function Hero() {
                 <div className="relative aspect-square lg:aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10 shadow-xl">
                     <Image
                         src="/hero-image.jpg"
-                        alt="Diseño web profesional responsive para negocios en Costa Rica - presencecr.digital"
+                        alt={t.hero.imageAlt}
                         fill
                         priority
                         className="object-cover"

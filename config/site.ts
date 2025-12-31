@@ -7,5 +7,6 @@ export const siteConfig = {
         formRecipient: "munozgustavo@outlook.com", // Email donde llegan los mensajes
         address: "San José, Costa Rica"
     },
-    whatsappNumber: "50671561908" // SIN + ni espacios
+    whatsappNumber: "50671561908", // SIN + ni espacios
+    lang: "es" // "es" o "en"
 };

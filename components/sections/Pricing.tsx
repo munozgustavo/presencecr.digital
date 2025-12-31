@@ -1,99 +1,30 @@
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
-
-interface PricingItem {
-    name: string;
-    type: string;
-    price: string;
-    description: string;
-    features: string[];
-    highlighted?: boolean;
-}
-
-const pricingItems: PricingItem[] = [
-    {
-        name: "Página Web Profesional",
-        type: "Pago único",
-        price: "$230 – $350",
-        description: "Tu negocio visible en internet con una página moderna y lista para vender.",
-        features: [
-            "Hasta 5 secciones",
-            "Diseño responsive (celular y PC)",
-            "Botón de WhatsApp directo",
-            "Formulario de contacto",
-            "Optimización SEO básica",
-            "Entrega en 24-48 horas"
-        ],
-        highlighted: true
-    },
-    {
-        name: "Tienda Online",
-        type: "Pago único",
-        price: "$400 – $600",
-        description: "Vendé tus productos por internet de forma fácil y segura.",
-        features: [
-            "Catálogo de productos",
-            "Carrito de compras",
-            "Diseño fácil de usar",
-            "Integración WhatsApp/pagos",
-            "Lista para vender"
-        ]
-    },
-    {
-        name: "Branding Visual",
-        type: "Pago único",
-        price: "$200 – $400",
-        description: "La identidad visual que tu marca necesita para verse profesional.",
-        features: [
-            "Paleta de colores personalizada",
-            "Tipografías recomendadas",
-            "Guía de estilo visual",
-            "Manual de uso básico",
-            "Archivos listos para usar"
-        ]
-    },
-    {
-        name: "Redes Sociales",
-        type: "Mensual",
-        price: "$100 – $250/mes",
-        description: "Mantené tu negocio activo y profesional en redes sin preocuparte.",
-        features: [
-            "Planificación mensual",
-            "Diseño de publicaciones",
-            "Textos enfocados en tu negocio",
-            "Imagen coherente con tu marca",
-            "Reporte de resultados"
-        ]
-    },
-    {
-        name: "Mantenimiento + Blog SEO",
-        type: "Mensual",
-        price: "$30 – $60/mes",
-        description: "Tu página siempre actualizada y posicionándose en Google.",
-        features: [
-            "Cambios de texto/imágenes",
-            "Actualizaciones técnicas",
-            "Soporte ante errores",
-            "Blog SEO (opcional)",
-            "Acompañamiento continuo"
-        ]
-    }
-];
+import { siteConfig } from "@/config/site";
+import { getDictionary } from "@/app/lib/getDictionary";
 
 export function Pricing() {
+    const t = getDictionary(siteConfig.lang as any);
+
+    // Mark the first item as highlighted as in original
+    const pricingItems = t.pricing.items.map((item, index) => ({
+        ...item,
+        highlighted: index === 0
+    }));
+
     return (
         <Section id="precios" className="bg-muted/30">
             <Container>
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <h2 className="text-3xl font-bold tracking-tight mb-4 font-heading">
-                        Precios Claros y Transparentes
+                        {t.pricing.title}
                     </h2>
                     <p className="text-muted-foreground text-lg mb-4">
-                        Sin costos ocultos. Sabés exactamente cuánto cuesta antes de empezar.
+                        {t.pricing.subtitle}
                     </p>
                     <p className="text-primary font-medium">
-                        Todos nuestros planes están pensados para negocios que buscan resultados reales sin pagar de más.
+                        {t.pricing.highlightText}
                     </p>
                 </div>
 
@@ -108,7 +39,7 @@ export function Pricing() {
                         >
                             {item.highlighted && (
                                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full">
-                                    Más popular
+                                    {t.pricing.popular}
                                 </div>
                             )}
 
@@ -144,7 +75,7 @@ export function Pricing() {
                                 href="/#contacto"
                                 className="w-full"
                             >
-                                Cotizar
+                                {t.pricing.cta}
                             </Button>
                         </div>
                     ))}
@@ -152,13 +83,13 @@ export function Pricing() {
 
                 <div className="text-center mt-12">
                     <p className="text-muted-foreground mb-6">
-                        *Los precios varían según la complejidad del proyecto. Escribinos por WhatsApp para una cotización personalizada sin compromiso.
+                        {t.pricing.disclaimer}
                     </p>
                     <div className="flex flex-col items-center gap-2">
                         <Button size="lg" href="/#contacto">
-                            Solicitar Cotización
+                            {t.pricing.mainCta}
                         </Button>
-                        <span className="text-xs text-muted-foreground">Respuesta rápida · Sin compromiso</span>
+                        <span className="text-xs text-muted-foreground">{t.pricing.trustText}</span>
                     </div>
                 </div>
             </Container>

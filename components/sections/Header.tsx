@@ -6,17 +6,19 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import { siteConfig } from "@/config/site";
-
-const navigation = [
-    { name: "Inicio", href: "/" },
-    { name: "Servicios", href: "/#servicios" },
-    { name: "Precios", href: "/#precios" },
-    { name: "Nosotros", href: "/#nosotros" },
-    { name: "Contacto", href: "/#contacto" },
-];
+import { getDictionary } from "@/app/lib/getDictionary";
 
 export function Header() {
+    const t = getDictionary(siteConfig.lang as any);
     const [isOpen, setIsOpen] = useState(false);
+
+    const navigation = [
+        { name: t.nav.home, href: "/" },
+        { name: t.nav.services, href: "/#servicios" },
+        { name: t.nav.pricing, href: "/#precios" },
+        { name: t.nav.about, href: "/#nosotros" },
+        { name: t.nav.contact, href: "/#contacto" },
+    ];
 
     return (
         <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -47,7 +49,7 @@ export function Header() {
                             {item.name}
                         </Link>
                     ))}
-                    <Button size="sm" href="/#contacto">Solicitar Cotización</Button>
+                    <Button size="sm" href="/#contacto">{t.nav.cta}</Button>
                 </nav>
 
                 {/* Mobile Menu Button */}
@@ -78,7 +80,7 @@ export function Header() {
                                 {item.name}
                             </Link>
                         ))}
-                        <Button className="w-full" size="sm" href="/#contacto" onClick={() => setIsOpen(false)}>Solicitar Cotización</Button>
+                        <Button className="w-full" size="sm" href="/#contacto" onClick={() => setIsOpen(false)}>{t.nav.cta}</Button>
                     </Container>
                 </div>
             )}
