@@ -28,7 +28,7 @@ export async function submitContactForm(prevState: unknown, formData: FormData) 
     try {
         const { error } = await resend.emails.send({
             from: 'Formulario Web <onboarding@resend.dev>', // Update this if you have a verified domain
-            to: siteConfig.contact.email,
+            to: siteConfig.contact.formRecipient,
             subject: `Nuevo contacto de: ${name}`,
             text: `Nombre: ${name}\nCorreo: ${email}\nTeléfono: ${phone}\nMensaje: ${message}\nFecha: ${new Date().toLocaleString()}`,
             html: `
