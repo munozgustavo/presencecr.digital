@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Plantilla Next.js Base v2.0 (EN DESARROLLO)
 
-First, run the development server:
+⚠️ IMPORTANTE  
+Esta versión **extiende** la plantilla v1.0 certificada.  
+NO rompe compatibilidad con v1.0.
+
+## 🧭 Principios de desarrollo v2.0
+
+- La arquitectura base de v1.0 es **INMUTABLE**
+- Todo feature nuevo debe ser:
+  - Opcional
+  - Desacoplado
+  - Implementado como extensión
+- NO se deben modificar:
+  - `app/layout.tsx`
+  - `app/globals.css`
+  - `app/theme.css` (estructura, solo valores)
+  - Componentes base existentes
+- NO se permiten dependencias pesadas por defecto
+
+## 🧩 Sistema de extensiones (v2.0)
+
+Las nuevas funcionalidades se implementan bajo:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+/extensions/
+
+
+
+
+# Plantilla Base Next.js para Negocios Locales
+
+Esta plantilla está diseñada para máximo rendimiento, SEO técnico y escalabilidad.
+
+## 🚀 Características
+
+- **Next.js 14+ (App Router)**
+- **Tailwind CSS v4** (Configurado con variables CSS nativas)
+- **TypeScript**
+- **Server Components** por defecto
+- **Optimización de Fuentes e Imágenes**
+
+## 📂 Estructura del Proyecto
+
+```bash
+├── app/
+│   ├── globals.css      # Configuración de Tailwind y @theme
+│   ├── theme.css        # Variables de diseño (Colores, Radios)
+│   ├── layout.tsx       # Layout principal + SEO Meta tags
+│   └── page.tsx         # Página de inicio ensamblada
+├── components/
+│   ├── ui/              # Componentes base (Botones, Contenedores)
+│   └── sections/        # Secciones de negocio (Hero, Contacto, etc.)
+└── public/              # Assets estáticos
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Personalización
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Para cambiar el "look & feel" de la marca, edita únicamente `app/theme.css`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Ejemplo:
+```css
+:root {
+  --primary: #tu-color-hex;
+  --radius: 1rem; /* Botones más redondos */
+}
+```
 
-## Learn More
+## 🛠 Comandos
 
-To learn more about Next.js, take a look at the following resources:
+- `npm run dev`: Iniciar servidor de desarrollo.
+- `npm run build`: Construir para producción.
+- `npm start`: Iniciar servidor de producción.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Lista para desplegar en [Vercel](https://vercel.com/new).
