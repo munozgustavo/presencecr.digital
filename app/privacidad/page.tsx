@@ -2,18 +2,21 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { siteConfig } from "@/config/site";
 import { getDictionary } from "@/app/lib/getDictionary";
+import { getServerLanguage } from "@/app/lib/getDictionary.server";
 import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const t = getDictionary(siteConfig.lang as any);
+    const lang = await getServerLanguage();
+    const t = getDictionary(lang);
     return {
         title: `${t.legal.privacidad.title} | ${siteConfig.name}`,
         description: `${t.legal.privacidad.title} y protección de datos personales de ${siteConfig.name}.`,
     };
 }
 
-export default function Privacidad() {
-    const t = getDictionary(siteConfig.lang as any);
+export default async function Privacidad() {
+    const lang = await getServerLanguage();
+    const t = getDictionary(lang);
 
     return (
         <Section className="pt-24 lg:pt-32">

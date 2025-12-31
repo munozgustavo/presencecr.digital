@@ -5,7 +5,6 @@ import { Pricing } from "@/components/sections/Pricing";
 import { ContactSection } from "@/extensions/contact-form/ContactSection";
 import { Footer } from "@/components/sections/Footer";
 import { siteConfig } from "@/config/site";
-import { getDictionary } from "@/app/lib/getDictionary";
 
 const serviceIcons = [
   <svg key="1" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
@@ -28,8 +27,12 @@ const testimonialIcons = [
   <svg key="t3" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 ];
 
-export default function Home() {
-  const t = getDictionary(siteConfig.lang as any);
+import { getDictionary } from "@/app/lib/getDictionary";
+import { getServerLanguage } from "@/app/lib/getDictionary.server";
+
+export default async function Home() {
+  const lang = await getServerLanguage();
+  const t = getDictionary(lang);
 
   const services = t.services.items.map((item, i) => ({ ...item, icon: serviceIcons[i] }));
   const values = t.us.items.map((item, i) => ({ ...item, icon: valueIcons[i] }));
@@ -37,7 +40,7 @@ export default function Home() {
 
   return (
     <>
-      <Header />
+      <Header lang={lang} />
       <main className="flex-1">
         <Hero />
 

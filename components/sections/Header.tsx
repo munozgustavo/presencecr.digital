@@ -6,10 +6,11 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import { siteConfig } from "@/config/site";
-import { getDictionary } from "@/app/lib/getDictionary";
+import { getDictionary, Lang } from "@/app/lib/getDictionary";
+import { LanguageSwitcher } from "../ui/LanguageSwitcher";
 
-export function Header() {
-    const t = getDictionary(siteConfig.lang as any);
+export function Header({ lang: initialLang }: { lang: Lang }) {
+    const t = getDictionary(initialLang);
     const [isOpen, setIsOpen] = useState(false);
 
     const navigation = [
@@ -49,21 +50,27 @@ export function Header() {
                             {item.name}
                         </Link>
                     ))}
-                    <Button size="sm" href="/#contacto">{t.nav.cta}</Button>
+                    <div className="flex items-center gap-4 border-l pl-6 border-border ml-2">
+                        <LanguageSwitcher currentLang={initialLang} />
+                        <Button size="sm" href="/#contacto">{t.nav.cta}</Button>
+                    </div>
                 </nav>
 
                 {/* Mobile Menu Button */}
-                <button
-                    className="md:hidden p-2 text-foreground"
-                    onClick={() => setIsOpen(!isOpen)}
-                    aria-label="Toggle menu"
-                >
-                    {isOpen ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
-                    ) : (
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
-                    )}
-                </button>
+                <div className="flex items-center gap-4 md:hidden">
+                    <LanguageSwitcher currentLang={initialLang} />
+                    <button
+                        className="p-2 text-foreground"
+                        onClick={() => setIsOpen(!isOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        {isOpen ? (
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                        ) : (
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
+                        )}
+                    </button>
+                </div>
             </Container>
 
             {/* Mobile Navigation */}
@@ -81,6 +88,9 @@ export function Header() {
                             </Link>
                         ))}
                         <Button className="w-full" size="sm" href="/#contacto" onClick={() => setIsOpen(false)}>{t.nav.cta}</Button>
+                        <div className="pt-2 border-t border-border flex justify-center">
+                            <LanguageSwitcher currentLang={initialLang} />
+                        </div>
                     </Container>
                 </div>
             )}

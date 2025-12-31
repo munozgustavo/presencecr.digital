@@ -2,18 +2,21 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { siteConfig } from "@/config/site";
 import { getDictionary } from "@/app/lib/getDictionary";
+import { getServerLanguage } from "@/app/lib/getDictionary.server";
 import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const t = getDictionary(siteConfig.lang as any);
+    const lang = await getServerLanguage();
+    const t = getDictionary(lang);
     return {
         title: `${t.legal.aviso.title} | ${siteConfig.name}`,
         description: `${t.legal.aviso.title} y términos de uso de ${siteConfig.name}.`,
     };
 }
 
-export default function AvisoLegal() {
-    const t = getDictionary(siteConfig.lang as any);
+export default async function AvisoLegal() {
+    const lang = await getServerLanguage();
+    const t = getDictionary(lang);
 
     return (
         <Section className="pt-24 lg:pt-32">
