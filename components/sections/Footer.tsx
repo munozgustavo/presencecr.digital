@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
 
@@ -9,7 +10,16 @@ export function Footer() {
                 <div className="grid md:grid-cols-4 gap-8 mb-8">
                     <div className="col-span-1 md:col-span-2">
                         <Link href="/" className="inline-block mb-4">
-                            <span className="text-2xl font-bold">{siteConfig.name}</span>
+                            <div className="flex items-center space-x-2">
+                                <Image
+                                    src="/logo.png"
+                                    alt={`${siteConfig.name} logo`}
+                                    width={32}
+                                    height={32}
+                                    className="rounded-sm brightness-0 invert"
+                                />
+                                <span className="text-2xl font-bold">{siteConfig.name}</span>
+                            </div>
                         </Link>
                         <p className="text-secondary-foreground/80 max-w-sm leading-relaxed">
                             Dedicados a ofrecer el mejor servicio con años de experiencia en el mercado.

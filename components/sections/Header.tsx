@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-
+import Image from "next/image";
 import { siteConfig } from "@/config/site";
 
 const navigation = [
@@ -23,6 +23,13 @@ export function Header() {
             <Container className="flex h-16 items-center justify-between">
                 <div className="flex gap-2 items-center">
                     <Link href="/" className="flex items-center space-x-2">
+                        <Image
+                            src="/logo.png"
+                            alt={`${siteConfig.name} logo`}
+                            width={32}
+                            height={32}
+                            className="rounded-sm"
+                        />
                         <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
                             {siteConfig.name}
                         </span>
