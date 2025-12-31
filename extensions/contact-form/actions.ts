@@ -1,3 +1,5 @@
+'use server';
+
 import { Resend } from 'resend';
 import { siteConfig } from '../../config/site';
 import { getDictionary } from '@/app/lib/getDictionary';
