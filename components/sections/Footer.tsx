@@ -16,7 +16,7 @@ export function Footer() {
                                     alt={`${siteConfig.name} logo`}
                                     width={32}
                                     height={32}
-                                    className="rounded-sm brightness-0 invert"
+                                    className="rounded-sm invert brightness-0"
                                 />
                                 <span className="text-2xl font-bold">{siteConfig.name}</span>
                             </div>
