@@ -5,8 +5,10 @@ import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/config/site";
 import { getDictionary } from "@/app/lib/getDictionary";
 
-export function Hero() {
-    const t = getDictionary(siteConfig.lang as any);
+import { Lang } from "@/app/lib/getDictionary";
+
+export function Hero({ lang = siteConfig.lang as Lang }: { lang?: Lang }) {
+    const t = getDictionary(lang);
 
     return (
         <Section className="relative overflow-hidden pt-16 md:pt-24 lg:pt-32 pb-16">

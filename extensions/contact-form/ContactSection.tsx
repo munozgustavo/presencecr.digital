@@ -6,9 +6,15 @@ import { ContactForm } from "./ContactForm";
 import { siteConfig } from "@/config/site";
 import { getDictionary } from "@/app/lib/getDictionary";
 
-export function ContactSection() {
-    const t = getDictionary(siteConfig.lang as any);
-    const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent("Hola, vi su página web y me gustaría más información sobre sus servicios de diseño web. ¿Podrían ayudarme?")}`;
+import { Lang } from "@/app/lib/getDictionary";
+
+export function ContactSection({ lang = siteConfig.lang as Lang }: { lang?: Lang }) {
+    const t = getDictionary(lang);
+    const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
+        lang === "en"
+            ? "Hello, I saw your website and would like more information about your web design services. Could you help me?"
+            : "Hola, vi su página web y me gustaría más información sobre sus servicios de diseño web. ¿Podrían ayudarme?"
+    )}`;
 
     return (
         <Section id="contacto">
@@ -58,9 +64,8 @@ export function ContactSection() {
                         </div>
                     </div>
 
-                    {/* Functional Contact Form */}
                     <div className="bg-muted p-8 rounded-2xl border border-border">
-                        <ContactForm />
+                        <ContactForm lang={lang} />
                     </div>
                 </div>
             </Container>

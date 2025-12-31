@@ -4,8 +4,10 @@ import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
 import { getDictionary } from "@/app/lib/getDictionary";
 
-export function Footer() {
-    const t = getDictionary(siteConfig.lang as any);
+import { Lang } from "@/app/lib/getDictionary";
+
+export function Footer({ lang = siteConfig.lang as Lang }: { lang?: Lang }) {
+    const t = getDictionary(lang);
 
     return (
         <footer className="bg-secondary text-secondary-foreground py-12 md:py-16">

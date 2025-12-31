@@ -4,8 +4,10 @@ import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/config/site";
 import { getDictionary } from "@/app/lib/getDictionary";
 
-export function Pricing() {
-    const t = getDictionary(siteConfig.lang as any);
+import { Lang } from "@/app/lib/getDictionary";
+
+export function Pricing({ lang = siteConfig.lang as Lang }: { lang?: Lang }) {
+    const t = getDictionary(lang);
 
     // Mark the first item as highlighted as in original
     const pricingItems = t.pricing.items.map((item, index) => ({

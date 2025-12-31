@@ -42,7 +42,7 @@ export default async function Home() {
     <>
       <Header lang={lang} />
       <main className="flex-1">
-        <Hero />
+        <Hero lang={lang} />
 
         {/* Servicios */}
         <Features
@@ -54,7 +54,7 @@ export default async function Home() {
         />
 
         {/* Precios */}
-        <Pricing />
+        <Pricing lang={lang} />
 
         {/* Por qué elegirnos */}
         <Features
@@ -75,9 +75,9 @@ export default async function Home() {
           className="bg-muted/30"
         />
 
-        <ContactSection />
+        <ContactSection lang={lang} />
       </main>
-      <Footer />
+      <Footer lang={lang} />
     </>
   );
 }

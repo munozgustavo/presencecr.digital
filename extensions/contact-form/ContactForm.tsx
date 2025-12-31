@@ -5,15 +5,17 @@ import { siteConfig } from '../../config/site';
 import { submitContactForm } from './actions';
 import { getDictionary } from '@/app/lib/getDictionary';
 
-export function ContactForm() {
-    const t = getDictionary(siteConfig.lang as any);
+import { Lang } from "@/app/lib/getDictionary";
+
+export function ContactForm({ lang = siteConfig.lang as Lang }: { lang?: Lang }) {
+    const t = getDictionary(lang);
     const [state, action, isPending] = useActionState(submitContactForm, null);
 
     // Generate WhatsApp Link dynamically if submission was successful
     let whatsappLink = '#';
     if (state?.success && state.data && siteConfig.whatsappNumber) {
         const { name, email, phone } = state.data;
-        const message = siteConfig.lang === 'en'
+        const message = lang === 'en'
             ? `Hello, I'm ${name}.\nI'm interested in your services.\nEmail: ${email}\nPhone: ${phone}`
             : `Hola, soy ${name}.\nEstoy interesado en sus servicios.\nMi correo es ${email}\nMi teléfono es ${phone}`;
         const encodedMessage = encodeURIComponent(message);
@@ -67,7 +69,7 @@ export function ContactForm() {
     return (
         <form action={action} className="space-y-4">
             {/* Hidden field for lang */}
-            <input type="hidden" name="lang" value={siteConfig.lang} />
+            <input type="hidden" name="lang" value={lang} />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
