@@ -20,9 +20,9 @@ export function ContactForm() {
     if (state?.success) {
         return (
             <div className="space-y-6 text-center animate-in fade-in zoom-in duration-300 py-8">
-                <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg text-green-600 dark:text-green-400">
-                    <p className="font-semibold">{state.message}</p>
-                    <p className="text-sm mt-1">Hemos recibido tus datos correctamente.</p>
+                <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-6 text-center">
+                    <h3 className="text-green-800 font-bold text-xl mb-1">Mensaje enviado correctamente.</h3>
+                    <p className="text-green-700 mb-6">Hemos recibido tus datos correctamente.</p>
                 </div>
 
                 {siteConfig.whatsappNumber && (
