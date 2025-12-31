@@ -15,7 +15,7 @@ const pricingItems: PricingItem[] = [
     {
         name: "Página Web Profesional",
         type: "Pago único",
-        price: "$150 – $300",
+        price: "$230 – $350",
         description: "Tu negocio visible en internet con una página moderna y lista para vender.",
         features: [
             "Hasta 5 secciones",
@@ -30,7 +30,7 @@ const pricingItems: PricingItem[] = [
     {
         name: "Tienda Online",
         type: "Pago único",
-        price: "$300 – $600",
+        price: "$400 – $600",
         description: "Vendé tus productos por internet de forma fácil y segura.",
         features: [
             "Catálogo de productos",

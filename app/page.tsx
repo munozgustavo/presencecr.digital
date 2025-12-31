@@ -9,14 +9,14 @@ import { Footer } from "@/components/sections/Footer";
 const services = [
   {
     title: "Página Web Profesional",
-    description: "Tu negocio visible en internet con una página moderna, rápida y diseñada para generar confianza. Incluye hasta 5 secciones, diseño responsive, botón de WhatsApp directo y entrega en 24-48 horas. Ideal para negocios que quieren verse profesionales y recibir consultas todos los días. Desde $150.",
+    description: "Tu negocio visible en internet con una página moderna, rápida y diseñada para generar confianza. Incluye hasta 5 secciones, diseño responsive, botón de WhatsApp directo y entrega en 24-48 horas. Ideal para negocios que quieren verse profesionales y recibir consultas todos los días. Desde $230.",
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
     ),
   },
   {
     title: "Tienda Online (E-commerce)",
-    description: "Vendé tus productos o servicios por internet de forma fácil y segura. Incluye catálogo de productos, carrito de compras, integración con WhatsApp y/o métodos de pago. No necesitas conocimientos técnicos, nosotros nos encargamos de todo. Desde $300.",
+    description: "Vendé tus productos o servicios por internet de forma fácil y segura. Incluye catálogo de productos, carrito de compras, integración con WhatsApp y/o métodos de pago. No necesitas conocimientos técnicos, nosotros nos encargamos de todo. Desde $400.",
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
     ),
